@@ -23,3 +23,15 @@
         .result {
             margin-top: 15px;
         }
+        button{
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2ace4d;
+            transition: .5s all ease-in-out;
+        }
