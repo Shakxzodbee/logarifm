@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hisoblash</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            margin: 10px;
+            padding: 10px;
+            width: 200px;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hisoblash</h1>
+        <input type="number" id="multiplier" placeholder="Son kiritish" step="any" />
+        <button onclick="calculate()">Hisoblash</button>
+        <div class="result" id="result"></div>
+    </div>
+    <script>
+        function calculate() {
+            const multiplier = parseFloat(document.getElementById('multiplier').value);
+            const logs = [2.723, 2.75, 2.728, 2.735, 2.737, 2.744, 2.746, 2.763]; // Log qiymatlari
+            const customWords = [
+                "ENG KICHIK ATKAT UCHUN",
+                "JUDA KICHIK",
+                "KICHIK ",
+                "ORTACHA PUNKT",
+                "SREDNIY ISHLASA BOLADI",
+                "ORTACHA ISHLASA BOLADI",
+                "KATTA PUNKT ISHLEDI ",
+                "KATTA PUNKT"
+            ];
+            let results = '';
+
+            logs.forEach((logValue, index) => {
+                const result = multiplier * Math.log(logValue);
+                const formattedResult = result.toString().split('.'); // Nuqtadan ajratish
+                const finalResult = `${formattedResult[0]}.${formattedResult[1].substring(0, 2)}`; // 2 ta raqam olish
+                results += `${customWords[index]}: ${finalResult}<br>`;
+            });
+
+            document.getElementById('result').innerHTML = results;
+        }
+
+        document.getElementById('multiplier').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                calculate();
+            }
+        });
+    </script>
+</body>
+</html>
