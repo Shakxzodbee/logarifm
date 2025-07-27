@@ -42,3 +42,6 @@ document.addEventListener('keydown', function (event) {
         location.reload();
     }
 });
+function refreshPage() {
+    location.reload();
+}
